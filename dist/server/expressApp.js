@@ -51,7 +51,7 @@ app.use((0, cookie_parser_1.default)()); // Parse cookies
 app.use((0, cors_1.default)(corsOptions)); // Enable CORS with the specified options
 app.enable("trust proxy"); // Trust reverse proxy (useful for load balancers)
 app.use((0, morgan_1.default)("dev")); // Log HTTP requests (tiny format for concise logs)
-const PUBLIC_DIR = path_1.default.join(__dirname, "..", "..", "public");
+const PUBLIC_DIR = path_1.default.join(__dirname, "..", "public");
 app.use(express_1.default.static(PUBLIC_DIR));
 app.use((req, res, next) => {
     const apiKey = req.headers["x-api-key"];

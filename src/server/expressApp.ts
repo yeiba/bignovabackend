@@ -52,7 +52,7 @@ app.use(cookieParser()); // Parse cookies
 app.use(cors(corsOptions)); // Enable CORS with the specified options
 app.enable("trust proxy"); // Trust reverse proxy (useful for load balancers)
 app.use(morgan("dev")); // Log HTTP requests (tiny format for concise logs)
-const PUBLIC_DIR = path.join(__dirname, "..", "..", "public");
+const PUBLIC_DIR = path.join(__dirname, "..", "public");
 app.use(express.static(PUBLIC_DIR));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
