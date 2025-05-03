@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # Step 3: Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --ignore-scripts
 
 # Step 5: Copy the source code
 COPY . .
