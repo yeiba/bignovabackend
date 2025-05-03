@@ -16,9 +16,13 @@ router.route("/").get(UserC.GetRouteHandler);
 
 router
   .route("/authenticate")
-  .get(UserM.VerifySessionHandler(), (res: Response) => {
-    res.end();
-  });
+  .get(
+    UserM.VerifySessionHandler(),
+    UserM.RestrictRoleHandler("admin"),
+    (req, res) => {
+      res.status(200).json({ success: true });
+    }
+  );
 
 router
   .route("/register")
