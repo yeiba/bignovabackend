@@ -65,7 +65,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // API Routes Middleware
-app.use("/api", router); // Route all "/api" requests to the router
+// app.use("/api", router); // Route all "/api" requests to the router
+
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from Vercel + Express!" });
+});
 
 // Route to serve the index.html file
 app.get("/", (req: Request, res: Response) => {
