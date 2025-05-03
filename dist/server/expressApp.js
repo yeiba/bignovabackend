@@ -51,7 +51,8 @@ app.use((0, cookie_parser_1.default)()); // Parse cookies
 app.use((0, cors_1.default)(corsOptions)); // Enable CORS with the specified options
 app.enable("trust proxy"); // Trust reverse proxy (useful for load balancers)
 app.use((0, morgan_1.default)("dev")); // Log HTTP requests (tiny format for concise logs)
-app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
+const PUBLIC_DIR = path_1.default.join(__dirname, "..", "..", "public");
+app.use(express_1.default.static(PUBLIC_DIR));
 app.use((req, res, next) => {
     const apiKey = req.headers["x-api-key"];
     if (config_1.default.NODE_ENV === "production" && apiKey !== config_1.default.FRONTEND_API_KEY) {
@@ -64,7 +65,7 @@ app.use((req, res, next) => {
 app.use("/api", routes_1.default); // Route all "/api" requests to the router
 // Route to serve the index.html file
 app.get("/", (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, "public", "index.html"));
+    res.sendFile(path_1.default.join(PUBLIC_DIR, "index.html"));
 });
 // Error Handle Middlewares
 // Handle Not Found Errors

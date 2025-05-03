@@ -52,7 +52,8 @@ app.use(cookieParser()); // Parse cookies
 app.use(cors(corsOptions)); // Enable CORS with the specified options
 app.enable("trust proxy"); // Trust reverse proxy (useful for load balancers)
 app.use(morgan("dev")); // Log HTTP requests (tiny format for concise logs)
-app.use(express.static(path.join(__dirname, "public")));
+const PUBLIC_DIR = path.join(__dirname, "..", "..", "public");
+app.use(express.static(PUBLIC_DIR));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   const apiKey = req.headers["x-api-key"];
@@ -68,7 +69,7 @@ app.use("/api", router); // Route all "/api" requests to the router
 
 // Route to serve the index.html file
 app.get("/", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(PUBLIC_DIR, "index.html"));
 });
 
 // Error Handle Middlewares
