@@ -14,6 +14,6 @@
       "./src/types"  // Add this path to include your custom type definitions
     ]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*","./api/*.ts"],
   "exclude": ["node_modules"]
 }

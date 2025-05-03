@@ -8,7 +8,7 @@
     "build": "npx prisma generate && tsc",
     "dev": "nodemon src/index.ts",
     "postinstall": "npx prisma generate",
-    "render-build": "npx prisma generate && tsc"
+    "render-build": "npx prisma generate "
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
