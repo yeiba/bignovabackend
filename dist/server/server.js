@@ -17,3 +17,4 @@ const startServer = () => {
     });
 };
 exports.default = startServer;
+//# sourceMappingURL=server.js.map

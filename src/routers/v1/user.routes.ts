@@ -20,7 +20,7 @@ router
     UserM.VerifySessionHandler(),
     UserM.RestrictRoleHandler("admin"),
     (req, res) => {
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, data: req.userData });
     }
   );
 

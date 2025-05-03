@@ -8,15 +8,12 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 exports.default = {
     PORT: process.env.PORT,
+    FRONTEND_API_KEY: process.env.FRONTEND_API_KEY,
     NODE_ENV: process.env.NODE_ENV,
     JWT_SECRET: process.env.JWT_SECRET,
     SESSION_SECRET: process.env.SESSION_SECRET,
-    MONGO_URL: process.env.MONGO_URL,
-    PUBLIC_KEY: process.env.PUBLIC_KEY,
-    PRIVATE_KEY: process.env.PRIVATE_KEY,
-    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
-    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
-    AWS_REGION: process.env.AWS_REGION,
-    AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
-    ELASTICSEARCH_URI: process.env.ELASTICSEARCH_URI,
+    DATABASE_URL: process.env.DATABASE_URL,
+    SUPABASE_BUCKET_URL: process.env.SUPABASE_BUCKET_URL,
+    ANON_KEY: process.env.ANON_KEY,
 };
+//# sourceMappingURL=index.js.map

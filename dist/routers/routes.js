@@ -9,3 +9,4 @@ const router = (0, express_1.Router)();
 // Mount versioned routes
 router.use("/v1", v1_1.default); // Version 1 routes
 exports.default = router;
+//# sourceMappingURL=routes.js.map
