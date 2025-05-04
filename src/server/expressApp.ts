@@ -19,7 +19,7 @@ import { ErrorControllers } from "../controllers/error.controllers";
 // CORS Configuration
 const corsOptions = {
   credentials: true, // Allow credentials such as cookies or authorization headers
-  origin: "http://localhost:3000", // Allow all origins (can be restricted for production)
+  origin: ["http://localhost:3000", "https://bignovabackend.onrender.com"], // Allow all origins (can be restricted for production)
 };
 
 const app = express(); // Create Express application
