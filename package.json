@@ -6,9 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/index.js",
     "build": "npx prisma generate && tsc",
-    "dev": "nodemon src/index.ts",
-    "postinstall": "npx prisma generate",
-    "render-build": "echo hello"
+    "dev": "nodemon src/index.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

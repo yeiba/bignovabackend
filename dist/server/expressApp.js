@@ -67,6 +67,9 @@ app.use("/api", routes_1.default); // Route all "/api" requests to the router
 app.get("/", (req, res) => {
     res.sendFile(path_1.default.join(PUBLIC_DIR, "index.html"));
 });
+// app.get("/api", (req, res) => {
+//   res.json({ message: "Hello from Vercel + Express!" });
+// });
 // Error Handle Middlewares
 // Handle Not Found Errors
 app.use(error_controllers_1.ErrorControllers.NotFoundHandler);

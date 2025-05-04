@@ -65,16 +65,16 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // API Routes Middleware
-// app.use("/api", router); // Route all "/api" requests to the router
-
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from Vercel + Express!" });
-});
+app.use("/api", router); // Route all "/api" requests to the router
 
 // Route to serve the index.html file
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(PUBLIC_DIR, "index.html"));
 });
+
+// app.get("/api", (req, res) => {
+//   res.json({ message: "Hello from Vercel + Express!" });
+// });
 
 // Error Handle Middlewares
 // Handle Not Found Errors

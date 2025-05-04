@@ -1,30 +1,52 @@
-# Step 1: Use Node.js base image
-FROM node:21 as builder
+# Base image
+FROM node:18-alpine AS builder
 
-# Step 2: Set the working directory
-WORKDIR /usr/src/app
+# Set working directory
+WORKDIR /app
 
-# Step 3: Copy package.json and package-lock.json
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN npm install --ignore-scripts
+# Install dependencies
+RUN npm ci
 
-# Step 5: Copy the source code
+# Copy prisma schema
+COPY prisma ./prisma/
+
+# Generate Prisma client
+RUN npx prisma generate
+
+# Copy the rest of the application
 COPY . .
 
-# Step 6: Build the TypeScript code
+# Build the application
 RUN npm run build
 
-# Step 7: Use a smaller image for running the application
-FROM node:21-slim
+# Production image
+FROM node:18-alpine AS production
 
-WORKDIR /usr/src/app
+# Set working directory
+WORKDIR /app
 
-# Copy built application from the builder
-COPY --from=builder /usr/src/app .
+# Set NODE_ENV to production
+ENV NODE_ENV=production
 
-# Step 8: Expose the application port
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install only production dependencies
+RUN npm ci --only=production
+
+# Copy prisma directory for migrations and schema
+COPY prisma ./prisma/
+
+# Copy build output from builder stage
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/src/public ./dist/public
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+
+# Expose the port the app will run on
 EXPOSE 8080
 
-# Step 9: Command to start the application
+# Command to run the app
 CMD ["npm", "start"]
